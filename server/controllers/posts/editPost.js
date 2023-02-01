@@ -36,7 +36,9 @@ export const editPost = async (req, res) => {
 
     if (image === 'null') {
       // eliminando imagen anterior si existe antes de subir la nueva
-      if (postToEdit.image) await deleteImage(postToEdit.image.public_id)
+      if (postToEdit.image && postToEdit.image.public_id) {
+        await deleteImage(postToEdit.image.public_id)
+      }
       postToEdit.image = null
     }
 
