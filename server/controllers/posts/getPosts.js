@@ -1,16 +1,16 @@
-import Post from "../../models/Post.js";
+import Post from '../../models/Post.js'
 
 export const getPosts = async (req, res) => {
   try {
-    const { id, cagegory } = req.params;
-    let posts;
+    const { id } = req.params
+    let posts
     if (id) {
-      posts = await Post.find({ userId: id });
+      posts = await Post.find({ userId: id })
     } else {
-      posts = await Post.find();
+      posts = await Post.find()
     }
-    return res.json(posts);
+    return res.json(posts)
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message })
   }
-};
+}

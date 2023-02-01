@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose'
 
 // creando schema
 const postSchema = new Schema({
@@ -6,12 +6,12 @@ const postSchema = new Schema({
   content: String,
   image: {
     url: String,
-    public_id: String,
+    public_id: String
   },
   createdAt: { type: Date, default: Date.now() },
   userId: String,
-  category: String,
-});
+  category: String
+})
 
 // creando modelo y exportando
-export default model("Post", postSchema);
+export default model('Post', postSchema)
