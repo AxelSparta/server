@@ -11,7 +11,7 @@ const app = express()
 // MIDDLEWARES (funciones que se ejecutan entre el procesamiento de los request y en envio de los responses)
 app.use(
   cors({
-    origin: 'https://axel-blog-dev.netlify.app/',
+    origin: 'https://axel-blog-dev.netlify.app',
     credentials: true
   })
 )
