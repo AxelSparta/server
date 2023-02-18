@@ -10,22 +10,17 @@ export const signIn = async (req, res) => {
   try {
     const { username, password } = req.body
 
-    if (!username || !password)
-      return res.status(400).json('Some data is missing.')
+    if (!username || !password) { return res.status(400).json('Some data is missing.') }
 
-    if (!validatePassword(password))
-      return res.status(400).json('Invalid password.')
+    if (!validatePassword(password)) { return res.status(400).json('Invalid password.') }
 
-    if (!validateUsername(username))
-      return res.status(400).json('Invalid username.')
+    if (!validateUsername(username)) { return res.status(400).json('Invalid username.') }
 
-    let user = await User.findOne({ username })
-    if (!user)
-      return res.status(404).json('Username or password is not correct.')
+    const user = await User.findOne({ username })
+    if (!user) { return res.status(404).json('Username or password is not correct.') }
 
-    let isPasswordCorrect = await user.comparePassword(password, user.password)
-    if (!isPasswordCorrect)
-      return res.status(404).json('Username or password is not correct.')
+    const isPasswordCorrect = await user.comparePassword(password, user.password)
+    if (!isPasswordCorrect) { return res.status(404).json('Username or password is not correct.') }
     const token = jwt.sign({ id: user._id }, JWT_KEY, {
       expiresIn: '14d'
     })

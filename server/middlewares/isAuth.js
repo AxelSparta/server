@@ -10,7 +10,7 @@ export const isAuth = async (req, res, next) => {
     if (!id) return res.status(400).json('Invalid token.')
 
     const user = await User.findById(id)
-    if (!user)
+    if (!user) {
       return res
         .clearCookie('access_token', {
           sameSite: 'none',
@@ -18,6 +18,7 @@ export const isAuth = async (req, res, next) => {
         })
         .status(404)
         .json('User not found.')
+    }
     req.user = user
     next()
   } catch (error) {

@@ -5,8 +5,7 @@ export const deleteUser = async (req, res) => {
   try {
     const user = req.user
     await Post.deleteMany({ userId: user.id })
-    if (user.avatar && user.avatar.public_id)
-      await deleteImage(user.avatar.public_id)
+    if (user.avatar && user.avatar.public_id) { await deleteImage(user.avatar.public_id) }
     await user.delete()
 
     // clear cookie

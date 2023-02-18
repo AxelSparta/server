@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 
-//Loads .env file contents into process.env
+// Loads .env file contents into process.env
 dotenv.config()
 
 export const PORT = process.env.PORT

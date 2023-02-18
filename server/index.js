@@ -2,7 +2,7 @@ import { PORT } from './config.js'
 import { connectDB } from './db.js'
 import app from './app.js'
 
-//mongodb
+// mongodb
 connectDB()
 
 app.listen(PORT, () => {

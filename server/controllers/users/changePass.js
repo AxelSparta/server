@@ -5,11 +5,9 @@ export const changePass = async (req, res) => {
     const { password, newPassword } = req.body
     const user = req.user
 
-    if (!password || !newPassword)
-      return res.status(400).json('Some data is missing.')
+    if (!password || !newPassword) { return res.status(400).json('Some data is missing.') }
 
-    if (!validatePassword(newPassword))
-      return res.status(400).json('Invalid password.')
+    if (!validatePassword(newPassword)) { return res.status(400).json('Invalid password.') }
 
     const isPasswordCorrect = await user.comparePassword(
       password,
