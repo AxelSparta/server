@@ -42,7 +42,8 @@ export const signUp = async (req, res) => {
     return res
       .cookie('access_token', token, {
         maxAge: 1000 * 60 * 60 * 24 * 14,
-        httpOnly: true
+        httpOnly: true,
+        sameSite: 'none'
       })
       .status(201)
       .json('User has been created.')
